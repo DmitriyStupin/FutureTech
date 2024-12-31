@@ -516,10 +516,25 @@ button[aria-label]::before {
   align-self: flex-end;
 }
 
+.header {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  animation-name: scrolling-header;
+  animation-fill-mode: both;
+  animation-timeline: scroll();
+  animation-range: 6.25rem 12.5rem;
+}
+@keyframes scrolling-header {
+  to {
+    box-shadow: 0 0 1rem 0 var(--color-dark-40);
+  }
+}
 .header__promo {
   padding-block: 1.25rem;
   text-align: center;
   border-bottom: var(--border);
+  background-color: var(--color-dark);
 }
 @media (width <= 47.99875rem) {
   .header__promo {

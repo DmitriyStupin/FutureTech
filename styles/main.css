@@ -1890,6 +1890,10 @@ button[aria-label]::before {
   column-gap: 1rem;
   transition-duration: var(--transition-duration);
 }
+.video-player__panel:not(.is-active) {
+  opacity: 0;
+  visibility: hidden;
+}
 .video-player__panel::before {
   content: "";
   position: absolute;

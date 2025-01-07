@@ -60,4 +60,15 @@
   &__actions {
     padding-block: fluid(50, 20);
   }
+
+  &__main {
+    --initialMaxHeight: #{rem(741)};
+
+    @include laptop {
+      --initialMaxHeight: #{rem(692)};
+    }
+    @include mobile {
+      --initialMaxHeight: #{rem(669)};
+    }
+  }
 }

@@ -56,9 +56,8 @@
   }
 
   &--right {
-
     &::before,
-    ::after {
+    &::after {
       left: 100%;
     }
   }

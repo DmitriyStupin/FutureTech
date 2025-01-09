@@ -257,6 +257,7 @@ svg * {
   --font-family-accent: "Kumbh Sans", sans-serif;
   --container-width: 100rem;
   --container-padding-x: 1rem;
+  --100vw: calc(100vw - var(--scrollbar-width));
   --transition-duration: 0.2s;
 }
 @media (width <= 90.06125rem) {
@@ -301,7 +302,7 @@ svg * {
 }
 .full-vw-line::before, .full-vw-line::after {
   position: absolute;
-  width: calc((100vw - var(--container-width)) / 2);
+  width: calc((var(--100vw) - var(--container-width)) / 2);
   height: 0.0625rem;
   background-color: var(--color-dark-15);
 }
@@ -346,7 +347,7 @@ svg * {
   translate: 0 -50%;
   content: "";
   right: 0;
-  background: url("../icons/arrow-top-right_black.svg") center no-repeat var(--color-accent);
+  background: url("../../icons/arrow-top-right_black.svg") center no-repeat var(--color-accent);
   border-radius: 50%;
 }
 
@@ -1645,9 +1646,9 @@ button[aria-label]::before {
     position: absolute;
     left: auto;
     right: 100%;
-    translate: 50%;
     bottom: 0;
-    width: 100vw;
+    translate: 50%;
+    width: var(--100vw);
     height: 0.0625rem;
     background-color: var(--color-dark-15);
   }
@@ -1691,9 +1692,9 @@ button[aria-label]::before {
     position: absolute;
     left: 50%;
     right: auto;
-    translate: -50%;
     bottom: 0;
-    width: 100vw;
+    translate: -50%;
+    width: var(--100vw);
     height: 0.0625rem;
     background-color: var(--color-dark-15);
   }
@@ -2216,9 +2217,9 @@ button[aria-label]::before {
     position: absolute;
     left: 50%;
     right: auto;
-    translate: -50%;
     bottom: 0;
-    width: 100vw;
+    translate: -50%;
+    width: var(--100vw);
     height: 0.0625rem;
     background-color: var(--color-dark-15);
   }

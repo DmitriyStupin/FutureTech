@@ -28,7 +28,9 @@
   &::before,
   &::after {
     position: absolute;
-    width: calc((100vw - var(--container-width)) / 2);
+    width: calc(
+      (var(--100vw) - var(--container-width)) / 2
+    );
     height: rem(1);
     background-color: var(--color-dark-15);
   }
@@ -48,7 +50,6 @@
   }
 
   &--left {
-
     &::before,
     &::after {
       right: 100%;
@@ -61,7 +62,6 @@
       left: 100%;
     }
   }
-
 }
 
 .circle-icon {
@@ -88,7 +88,8 @@
     content: '';
     right: 0;
     background:
-      url('../icons/arrow-top-right_black.svg') center no-repeat var(--color-accent);
+      url('../../icons/arrow-top-right_black.svg') center no-repeat
+      var(--color-accent);
     border-radius: 50%;
   }
 }

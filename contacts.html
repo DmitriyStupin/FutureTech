@@ -109,7 +109,7 @@
                             d="M21.0571 7.18114C21.0664 7.39235 21.0664 7.59395 21.0664 7.80515C21.0756 14.2084 16.3712 21.6004 7.76793 21.6004C5.23048 21.6004 2.73933 20.842 0.600098 19.4212C0.970528 19.4692 1.34096 19.4884 1.71139 19.4884C3.81358 19.4884 5.86021 18.7588 7.51789 17.4052C5.51756 17.3668 3.75802 16.0132 3.14681 14.0356C3.85063 14.1796 4.57296 14.1508 5.25826 13.9492C3.08198 13.5076 1.51691 11.5204 1.50765 9.20675C1.50765 9.18755 1.50765 9.16835 1.50765 9.14915C2.15591 9.52355 2.88751 9.73475 3.62837 9.75395C1.58174 8.33315 0.942746 5.50114 2.18369 3.28353C4.5637 6.31714 8.06427 8.15075 11.8241 8.35235C11.4445 6.67234 11.9631 4.90594 13.1762 3.71553C15.0561 1.88193 18.0196 1.97793 19.7977 3.92673C20.8441 3.71553 21.8535 3.31233 22.7704 2.74593C22.4185 3.86913 21.6869 4.81954 20.7145 5.42434C21.6406 5.30914 22.5481 5.04994 23.4001 4.66594C22.7704 5.64514 21.9739 6.48994 21.0571 7.18114Z"
                             fill="white" />
                         </svg>
-        
+
                       </a>
                     </li>
                     <li class="soc1als__item">
@@ -143,7 +143,88 @@
           </li>
         </ul>
       </header>
-      <div class="contacts__body"></div>
+      <div class="contacts__body">
+        <div class="list">
+          <div class="list__item">
+            <div class="card container">
+              <div class="card__preview">
+                <div class="card__preview-main">
+                  <img src="./images/contacts/1.svg" alt="" class="card__preview-icon" width="80" height="80"
+                    loading="lazy">
+                  <div class="card__preview-info">
+                    <h2 class="card__preview-title">Get in Touch with AI Podcasts</h2>
+
+                  </div>
+                </div>
+              </div>
+              <div class="card__body">
+                <form class="feedback-form" action="/">
+                  <div class="feedback-form__cell field">
+                    <label class="field__label" for="firstName">First Name <span class="field__required-star"
+                        aria-hidden="true">*</span></label>
+                    <input class="field__control" id="firstName" placeholder="Ivan" required>
+                  </div>
+                  <div class="feedback-form__cell field">
+                    <label class="field__label" for="lastName">Last Name</label>
+                    <input class="field__control" id="lastName" placeholder="Ivanov">
+                  </div>
+                  <div class="feedback-form__cell field">
+                    <label class="field__label" for="email">Email <span class="field__required-star"
+                        aria-hidden="true">*</span></label>
+                    <input class="field__control" id="email" placeholder="example@email.com" required type="email">
+                  </div>
+                  <div class="feedback-form__cell field">
+                    <label class="field__label" for="phoneNumber"></label>
+                    <div class="field__body">
+                      <div class="select">SELECT</div>
+                      <input class="field__control" id="phoneNumber" placeholder="(999) 999-99-99">
+                    </div>
+                  </div>
+                  <div class="feedback-form__cell feedback-form__cell--wide field">
+                    <label class="field__label" for="message">Message <span class="field__required-star"
+                        aria-hidden="true">*</span></label>
+                    <textarea class="field__control" id="message" placeholder="Hi! I have an idea..." required></textarea>
+                  </div>
+                  <div class="feedback-form__cell feedback-form__cell--wide">
+                    <div class="feedback-form__actions">
+                      <div class="feedback-form__agreement">
+                        <label for="" class="checkbox">
+                          <input type="checkbox" class="checkbox__input" required>
+                          <span class="checkbox__label">I agree with Terms of Use and Privacy Policy</span>
+                        </label>
+                      </div>
+                      <button class="feedback-form__submit-button button button--accent" type="submit">Send</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="list__item">
+            <div class="card container">
+              <div class="card__preview">
+                <div class="card__preview-main">
+                  <img src="./images/contacts/2.svg" alt="" class="card__preview-icon" width="80" height="80"
+                    loading="lazy">
+                  <div class="card__preview-info">
+                    <h2 class="card__preview-title h3">Asked question</h2>
+                    <div class="card__preview-description">
+                      <p>If the question is not available on our FAQ section, Feel free to contact us personally, we
+                        will resolve your respective doubts. </p>
+                    </div>
+                    <a href="/" class="card__preview-link button button--dark-gray">
+                      <span class="icon icon--yellow-arrow">Ask Qustion</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="card__body">
+                ACCORDION
+              </div>
+            </div>
+          </div>
+          </di>
+        </div>
     </section>
   </main>
 

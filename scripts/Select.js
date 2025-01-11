@@ -1,4 +1,5 @@
 import BaseComponent from "./BaseComponent.js";
+import MatchMedia from "./MatchMedia.js";
 
 const rootSelector = '[data-js-select]';
 
@@ -45,9 +46,51 @@ class Select extends BaseComponent {
     })
     this.fixDropdownPosition()
     this.updateTabIndexes()
+    this.bindEvents()
   }
 
   updateUI() {
+    const {
+      isExpanded,
+      currentOptionIndex,
+      selectedOptionElement,
+    } = this.state
+
+    const newSelectedOptionValue = selectedOptionElement.textContent.trim()
+
+    const updateOriginalControl = () => {
+      this.originalControlElement.value = newSelectedOptionValue
+    }
+
+    const updateButton = () => {
+      this.buttonElement.textContent = newSelectedOptionValue
+      this.buttonElement.classList.toggle(this.stateClasses.isExpanded, isExpanded)
+      this.buttonElement.stateAttribute(this.stateAttributes.ariaExpanded, isExpanded)
+      this.buttonElement.stateAttribute(
+        this.stateAttributes.ariaActiveDescendant, 
+        this.optionElements[currentOptionIndex].id
+      )
+    }
+
+    const updateDropdown = () => {
+      this.dropdownElement.classList.toggle(this.stateClasses.isExpanded, isExpanded)
+    }
+
+    const updateOptions = () => {
+      this.optionElements.forEach((optionElement, index) => {
+        const isCurrent = currentOptionIndex === index;
+        const isSelected = selectedOptionElement === optionElement;
+
+        optionElement.classList.toggle(this.stateClasses.isCurrent, isCurrent)
+        optionElement.classList.toggle(this.stateClasses.isSelected, isSelected)
+        optionElement.stateAttribute(this.stateAttributes.ariaSelected, isSelected)
+      })
+    }
+
+    updateOriginalControl()
+    updateButton()
+    updateDropdown()
+    updateOptions()
   }
 
   fixDropdownPosition() {
@@ -68,8 +111,17 @@ class Select extends BaseComponent {
     )
   }
 
-  updateTabIndexes() {
-    
+  updateTabIndexes(isMobileDevice = MatchMedia.mobile.matches) {
+    this.originalControlElement.tabIndex = isMobileDevice ? 0 : -1
+    this.buttonkElement.tabIndex = isMobileDevice ? -1 : 0
+  }
+
+  onMobileMatchMediaChange = (event) => {
+    this.updateTabIndexes(event.matches)
+  }
+
+  bindEvents() {
+    MatchMedia.mobile.addEventListener('change', this.onMobileMatchMediaChange)
   }
 }
 

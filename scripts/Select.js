@@ -65,8 +65,8 @@ class Select extends BaseComponent {
     const updateButton = () => {
       this.buttonElement.textContent = newSelectedOptionValue
       this.buttonElement.classList.toggle(this.stateClasses.isExpanded, isExpanded)
-      this.buttonElement.stateAttribute(this.stateAttributes.ariaExpanded, isExpanded)
-      this.buttonElement.stateAttribute(
+      this.buttonElement.setAttribute(this.stateAttributes.ariaExpanded, isExpanded)
+      this.buttonElement.setAttribute(
         this.stateAttributes.ariaActiveDescendant, 
         this.optionElements[currentOptionIndex].id
       )
@@ -83,7 +83,7 @@ class Select extends BaseComponent {
 
         optionElement.classList.toggle(this.stateClasses.isCurrent, isCurrent)
         optionElement.classList.toggle(this.stateClasses.isSelected, isSelected)
-        optionElement.stateAttribute(this.stateAttributes.ariaSelected, isSelected)
+        optionElement.setAttribute(this.stateAttributes.ariaSelected, isSelected)
       })
     }
 
@@ -91,6 +91,10 @@ class Select extends BaseComponent {
     updateButton()
     updateDropdown()
     updateOptions()
+  }
+
+  toggleExpandedState() {
+    this.state.isExpanded = !this.state.isExpanded;
   }
 
   fixDropdownPosition() {
@@ -113,7 +117,11 @@ class Select extends BaseComponent {
 
   updateTabIndexes(isMobileDevice = MatchMedia.mobile.matches) {
     this.originalControlElement.tabIndex = isMobileDevice ? 0 : -1
-    this.buttonkElement.tabIndex = isMobileDevice ? -1 : 0
+    this.buttonElement.tabIndex = isMobileDevice ? -1 : 0
+  }
+
+  onButtonClick = () => {
+    this.toggleExpandedState();
   }
 
   onMobileMatchMediaChange = (event) => {
@@ -122,6 +130,7 @@ class Select extends BaseComponent {
 
   bindEvents() {
     MatchMedia.mobile.addEventListener('change', this.onMobileMatchMediaChange)
+    this.buttonElement.addEventListener('click', this.onButtonClick)
   }
 }
 

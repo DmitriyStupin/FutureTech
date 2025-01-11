@@ -24,7 +24,7 @@ class BaseComponent {
   }
 
   updateUI() {
-    throw new Error('Необходимо реализовать медот updateUI!')
+    throw new Error('Необходимо реализовать метод updateUI!')
   }
 }
 

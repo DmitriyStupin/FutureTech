@@ -1,6 +1,8 @@
+import BaseComponent from "./BaseComponent.js";
+
 const rootSelector = '[data-js-select]';
 
-class Select {
+class Select extends BaseComponent {
   selectors = {
     root: rootSelector,
     originalControl: '[data-js-select-original-control]',
@@ -30,16 +32,44 @@ class Select {
   }
 
   constructor(rootElement) {
+    super()
     this.rootElement = rootElement;
     this.originalControlElement = this.rootElement.querySelector(this.selectors.originalControl);
     this.buttonElement = this.rootElement.querySelector(this.selectors.button);
     this.dropdownElement = this.rootElement.querySelector(this.selectors.dropdown);
     this.optionElements = this.dropdownElement.querySelectorAll(this.selectors.option);
-    this.state = {
+    this.state = this.getProxyState({
       ...this.initialState,
       currentOptionIndex: this.originalControlElement.selectedIndex,
       selectedOptionElement: this.optionElements[this.originalControlElement.selectedIndex],
-    }
+    })
+    this.fixDropdownPosition()
+    this.updateTabIndexes()
+  }
+
+  updateUI() {
+  }
+
+  fixDropdownPosition() {
+    const viewportWidth = document.documentElement.clientWidth
+    const halfViewportX = viewportWidth / 2
+    const { width, x } = this.buttonElement.getBoundingClientRect()
+    const buttonCenterX = x + width / 2
+    const isButtonOnTheLeftViewportSide = buttonCenterX < halfViewportX
+
+    this.dropdownElement.classList.toggle(
+      this.stateClasses.isOnTheLeftSide,
+      isButtonOnTheLeftViewportSide
+    )
+
+    this.dropdownElement.classList.toggle(
+      this.stateClasses.isOnTheRightSide,
+      !isButtonOnTheLeftViewportSide
+    )
+  }
+
+  updateTabIndexes() {
+    
   }
 }
 
